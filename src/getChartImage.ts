@@ -6,7 +6,8 @@ export const getChartImage = async (spec: any) => {
     // 声明使用的渲染环境以及传染对应的渲染环境参数
     mode: 'node',
     modeParams: Canvas,
-    animation: false
+    animation: false,
+    dpr: 2
   });
 
   cs.renderSync();
@@ -14,6 +15,6 @@ export const getChartImage = async (spec: any) => {
   const buffer = cs.getImageBuffer();
   const timestamp = Date.now();
 
-  await fs.writeFile(`src/chartImage/${timestamp}.png`, buffer);
+  await fs.writeFile(`../chartImage/${timestamp}.png`, buffer);
   return timestamp + '.png';
 };
