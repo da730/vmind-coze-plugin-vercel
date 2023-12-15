@@ -7,16 +7,18 @@ const app = express();
 
 
 // 使用body parser中间件来解析请求体
+app.use('/chartImage', express.static('chartImage'));
+
 app.use(bodyParser.json());      // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({  // to support URL-encoded bodies
   extended: true
 }));
-app.use('/chartImage', express.static('chartImage'));
+
 app.get('/', function (req, res) {
   res.send('Hello, world!');
 });
 
-app.post("/generateChart", function (req, res) {
+app.post("/generateChart", async function (req, res) {
   console.log("--------------------");
 
   //console.log(await context.req.text());
@@ -100,7 +102,7 @@ app.post("/generateChart", function (req, res) {
     background: "#00000033",
   };
 
-  const imageFileName = getChartImage(testSpec);
+  const imageFileName = await getChartImage(testSpec);
 
   return res.json({
     url: "https://vmind-coze-plugin-vercel-iew8xj68w-das-projects-ebf9cd71.vercel.app/chartImage/" + imageFileName,
@@ -108,5 +110,7 @@ app.post("/generateChart", function (req, res) {
 });
 
 app.listen(3001, function () {
-  console.log('App listening on port 3000!');
+  console.log('App listening on port 3001!');
 });
+
+module.exports = app;
