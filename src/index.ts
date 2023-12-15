@@ -103,7 +103,7 @@ app.post("/generateChart", function (req, res) {
   const imageFileName = getChartImage(testSpec);
 
   return res.json({
-    url: "",
+    url: "https://vmind-coze-plugin-vercel-iew8xj68w-das-projects-ebf9cd71.vercel.app/chartImage/" + imageFileName,
   } as GenerateChartResponseParams);
 });
 

@@ -5,5 +5,19 @@
       "src": "dist/index.js",
       "use": "@vercel/node"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/generateChart",
+      "destination": "/generateChart"
+    },
+    {
+      "source": "/",
+      "destination": "/"
+    },
+    {
+      "source": "/chartImage/(.*)",
+      "destination": "/chartImage"
+    }
   ]
 }
