@@ -1,7 +1,7 @@
 import Canvas, { createCanvas } from "canvas";
 import VChart from "@visactor/vchart";
-
-export const getChartImage = (spec: any) => {
+import { promises as fs } from 'fs'
+export const getChartImage = async (spec: any) => {
   const cs = new VChart(spec, {
     // 声明使用的渲染环境以及传染对应的渲染环境参数
     mode: 'node',
@@ -12,8 +12,8 @@ export const getChartImage = (spec: any) => {
   cs.renderSync();
 
   const buffer = cs.getImageBuffer();
-  console.log(buffer);
   const timestamp = Date.now();
-  //fs.writeFileSync(`./chartImage/${timestamp}.png`, buffer);
-  return timestamp;
+
+  await fs.writeFile(`src/chartImage/${timestamp}.png`, buffer);
+  return timestamp + '.png';
 };
