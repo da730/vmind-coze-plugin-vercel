@@ -8,16 +8,8 @@
   ],
   "rewrites": [
     {
-      "source": "/generateChart/(.*)",
-      "destination": "/generateChart"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    },
-    {
-      "source": "/chartImage/(.*)",
-      "destination": "/chartImage"
+      "source": "/api/(.*)",
+      "destination": "/api"
     }
   ]
 }
