@@ -15,6 +15,6 @@ export const getChartImage = async (spec: any) => {
   const buffer = cs.getImageBuffer();
   const timestamp = Date.now();
 
-  await fs.writeFile(`../chartImage/${timestamp}.png`, buffer);
+  await fs.writeFile(`chartImage/${timestamp}.png`, buffer);
   return timestamp + '.png';
 };

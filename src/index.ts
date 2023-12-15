@@ -11,7 +11,7 @@ app.use(bodyParser.json());      // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({  // to support URL-encoded bodies
   extended: true
 }));
-app.use('/chartImage', express.static('public'));
+app.use('/chartImage', express.static('chartImage'));
 app.get('/', function (req, res) {
   res.send('Hello, world!');
 });
@@ -103,10 +103,10 @@ app.post("/generateChart", function (req, res) {
   const imageFileName = getChartImage(testSpec);
 
   return res.json({
-    url: "https://lf-cdn-tos.bytescm.com/obj/static/visactor-site/output/bytedance/img/visactor/main-simple-1.png",
+    url: "",
   } as GenerateChartResponseParams);
 });
 
-app.listen(3000, function () {
+app.listen(3001, function () {
   console.log('App listening on port 3000!');
 });
